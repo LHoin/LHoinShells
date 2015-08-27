@@ -1,0 +1,1 @@
+git status | grep "On branch" | sed "s/On branch //g" | xargs git push origin
