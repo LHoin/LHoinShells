@@ -1,2 +1,2 @@
 #!/bin/bash
-ps -ef | grep fekit | awk '{print $2}' | xargs sudo kill -9
+ps -ef | grep fekit | grep -v -E "grep|fekit-publish|fekit min|fekit pack|fekit sync|fekit-servers|vi " | awk '{print $2}' | xargs sudo kill -9
