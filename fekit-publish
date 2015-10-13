@@ -3,3 +3,5 @@ echo -e "--------------------------------------"
 fekit min
 echo -e "--------------------------------------"
 fekit sync
+
+osascript -e "display notification \"Fekit Publish Finished\" with title \"Dear LHoin:\""
