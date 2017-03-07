@@ -1,0 +1,35 @@
+echo "┌───────┐"
+num="$RANDOM % 6 + 1"
+case `echo $num | bc` in
+"1")
+    echo "│       │ You"
+    echo "│   ✪   │ Got"
+    echo "│       │ One. Bad Luck."
+  ;;
+"2")
+    echo "│ ✪     │ You"
+    echo "│       │ Got"
+    echo "│     ✪ │ Two"
+  ;;
+"3")
+    echo "│ ✪     │ You"
+    echo "│   ✪   │ Got"
+    echo "│     ✪ │ Three"
+  ;;
+"4")
+    echo "│ ✪   ✪ │ You"
+    echo "│       │ Got"
+    echo "│ ✪   ✪ │ Four"
+  ;;
+"5")
+    echo "│ ✪   ✪ │ You"
+    echo "│   ✪   │ Got"
+    echo "│ ✪   ✪ │ Five"
+  ;;
+"6")
+    echo "│ ✪   ✪ │ You"
+    echo "│ ✪   ✪ │ Got"
+    echo "│ ✪   ✪ │ Six! Lucky!"
+  ;;
+esac
+echo "└───────┘"
