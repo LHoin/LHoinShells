@@ -8,57 +8,73 @@ line5=()
 
 for i in `seq $times`
 do
-line1+=("┌───────┐")
-line5+=("└───────┘")
 num="$RANDOM % 6 + 1"
 case `echo $num | bc` in
 "1")
-    line1+=('              ')
+    line1+=('┌───────┐               ')
     line2+=("│       │ You           ")
     line3+=("│   ✪   │ Got           ")
     line4+=("│       │ One. Bad Luck.")
-    line5+=('              ')
+    line5+=('└───────┘               ')
   ;;
 "2")
-    line1+=('   ')
+    line1+=('┌───────┐    ')
     line2+=('│ ✪     │ You')
     line3+=('│       │ Got')
     line4+=('│     ✪ │ Two')
-    line5+=('   ')
+    line5+=('└───────┘    ')
   ;;
 "3")
-    line1+=('     ')
+    line1+=('┌───────┐      ')
     line2+=('│ ✪     │ You  ')
     line3+=('│   ✪   │ Got  ')
     line4+=('│     ✪ │ Three')
-    line5+=('     ')
+    line5+=('└───────┘      ')
   ;;
 "4")
-    line1+=('    ')
+    line1+=('┌───────┐     ')
     line2+=('│ ✪   ✪ │ You ')
     line3+=('│       │ Got ')
     line4+=('│ ✪   ✪ │ Four')
-    line5+=('    ')
+    line5+=('└───────┘     ')
   ;;
 "5")
-    line1+=('    ')
+    line1+=('┌───────┐     ')
     line2+=('│ ✪   ✪ │ You ')
     line3+=('│   ✪   │ Got ')
     line4+=('│ ✪   ✪ │ Five')
-    line5+=('    ')
+    line5+=('└───────┘     ')
   ;;
 "6")
-    line1+=('           ')
+    line1+=('┌───────┐            ')
     line2+=('│ ✪   ✪ │ You        ')
     line3+=('│ ✪   ✪ │ Got        ')
     line4+=('│ ✪   ✪ │ Six! Lucky!')
-    line5+=('           ')
+    line5+=('└───────┘            ')
   ;;
 esac
+width=`tput cols`
+linelen="${line4[*]}"
+last=`expr ${#line4[*]} - 1`
+#echo $i $times $(expr $num | bc) $width ${#linelen}
+if [ ! $width -gt ${#linelen} ]; then
+  echo "${line1[*]:0:$last}"
+  echo "${line2[*]:0:$last}"
+  echo "${line3[*]:0:$last}"
+  echo "${line4[*]:0:$last}"
+  echo "${line5[*]:0:$last}"
+  line1=("${line1[$last]}");
+  line2=("${line2[$last]}");
+  line3=("${line3[$last]}");
+  line4=("${line4[$last]}");
+  line5=("${line5[$last]}");
+fi
+if [ $i == $times ]; then
+  echo "${line1[*]}"
+  echo "${line2[*]}"
+  echo "${line3[*]}"
+  echo "${line4[*]}"
+  echo "${line5[*]}"
+fi
 done
 
-echo "${line1[*]}"
-echo "${line2[*]}"
-echo "${line3[*]}"
-echo "${line4[*]}"
-echo "${line5[*]}"
