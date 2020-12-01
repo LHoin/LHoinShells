@@ -1,0 +1,2 @@
+BRANCH_NAME=`git status | grep "On branch" | sed "s/On branch //g"`
+git push origin $BRANCH_NAME --force
